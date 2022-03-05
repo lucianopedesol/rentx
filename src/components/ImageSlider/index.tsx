@@ -9,7 +9,7 @@ import {
 } from './styles';
 
 interface IProps {
-    imageUrl: string;
+    imageUrl: string[];
 }
 export function ImageSlider({ imageUrl }: IProps) {
     return (
@@ -23,7 +23,7 @@ export function ImageSlider({ imageUrl }: IProps) {
 
             <CarImageWrapper>
                 <CarImage
-                    source={{ uri: imageUrl }}
+                    source={{ uri: imageUrl[0] }}
                     resizeMode="contain"
                 />
             </CarImageWrapper>
