@@ -13,8 +13,9 @@ import {
 
 } from '@expo-google-fonts/archivo'
 
-import theme from './src/styles/theme';
-import { SchedulingComplete } from './src/screens/SchedulingComplete'; 
+import theme from './src/styles/theme'; 
+import { Routes } from './src/routes'; 
+import { StatusBar } from 'react-native';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,8 +31,14 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <SchedulingComplete />
+      <StatusBar barStyle='light-content'
+        backgroundColor='transparent'
+        translucent
+      />
+      <Routes />
     </ThemeProvider>
+
+
   );
 
 }
