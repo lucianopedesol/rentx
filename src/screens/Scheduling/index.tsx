@@ -17,17 +17,21 @@ import {
 import { StatusBar } from 'react-native';
 import { Button } from '../../components/Button'; 
 import { Calendar } from '../../components/Calendar';
+import { useNavigation } from '@react-navigation/native';
 
 export function Scheduling() {
   const theme = useTheme();
+
+  const navigation = useNavigation();
+  function handleConfirmRental() {
+    navigation.navigate('SchedulingDetails');
+
+  }
+
   return (
     <Container>
       <Header>
-        <StatusBar
-          barStyle='light-content'
-          backgroundColor='transparent'
-          translucent
-        />
+      
         <BackButton color={theme.colors.shape} onPress={() => { }} />
         <Title>
           Escolha uma{'\n'}
@@ -57,7 +61,7 @@ export function Scheduling() {
       </Content>
 
       <Footer>
-        <Button title="Confirmar" onPress={() => { }} />
+        <Button title="Confirmar" onPress={handleConfirmRental} />
       </Footer>
     </Container>
   );

@@ -1,5 +1,5 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFValue } from 'react-native-responsive-fontsize';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import styled, { css } from 'styled-components/native';
 
 interface IDateValueProps {
@@ -12,7 +12,7 @@ export const Container = styled.View`
 
 export const Header = styled.View` 
     width: 100%;
-    height: 325px;
+    height: ${RFValue(300)}px; 
 
     background-color: ${({ theme }) => theme.colors.header};
  

@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 
 import { Accessory } from '../../components/Accessory';
@@ -44,6 +46,13 @@ import { useTheme } from 'styled-components';
 export function SchedulingDetails() {
   const theme = useTheme();
   const image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1uDELAOoFFlU7OqH4L8kEMXDITc-QdDVgOvYxIT5PDlu4IqEuXQO4Utht_lCOAQn0hhA&usqp=CAU';
+
+  const navigation = useNavigation();
+  function handleConfirm() {
+    navigation.navigate('SchedulingComplete');
+
+  }
+
   return (
     <Container>
       <Header>
@@ -110,7 +119,7 @@ export function SchedulingDetails() {
         </RentalPrice>
       </Content>
       <Footer>
-        <Button title='Confirmar' onPress={() => { }} />
+        <Button title='Alugar agora' color={theme.colors.success} onPress={handleConfirm} />
       </Footer>
     </Container>
   );

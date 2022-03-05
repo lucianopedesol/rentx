@@ -1,4 +1,6 @@
 import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useTheme } from 'styled-components';
 
 import {
     Container,
@@ -11,10 +13,13 @@ interface IProps {
     onPress: () => void;
 }
 
-export function Button({ title, color, ...rest }: IProps) {
+export function Button({ title, color, onPress }: IProps) {
+    const theme = useTheme();
     return (
-        <Container {...rest} color={color}>
-            <Title>{title}</Title>
-        </Container>
+        <GestureHandlerRootView>
+            <Container onPress={onPress} color={color ? color : theme.colors.main}>
+                <Title>{title}</Title>
+            </Container>
+        </GestureHandlerRootView>
     );
 }

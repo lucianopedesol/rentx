@@ -27,11 +27,21 @@ import {
   Footer,
 } from './styles';
 import { Button } from '../../components/Button';
+import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export function CarDetails() {
   const image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1uDELAOoFFlU7OqH4L8kEMXDITc-QdDVgOvYxIT5PDlu4IqEuXQO4Utht_lCOAQn0hhA&usqp=CAU';
+  const navigation = useNavigation();
+
+  function handleConfirmRental() {
+    navigation.navigate('Scheduling');
+
+  }
+
   return (
     <Container>
+       
       <Header>
         <BackButton onPress={() => { }} />
       </Header>
@@ -77,7 +87,7 @@ export function CarDetails() {
         </About>
       </Content>
       <Footer>
-        <Button title='Confirmar' onPress={() => { }} />
+        <Button title='Escolher período do alugel' onPress={handleConfirmRental} />
       </Footer>
     </Container>
   );

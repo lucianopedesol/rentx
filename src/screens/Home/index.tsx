@@ -1,11 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { FlatList, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "react-native-responsive-fontsize";
+import { useTheme } from 'styled-components';
 
 
 import Logo from '../../assets/logo.svg';
-import { Car, ICardData } from '../../components/Car';
+import { Car } from '../../components/Car';
 import {
   Container,
   Header,
@@ -15,6 +17,7 @@ import {
 } from './styles';
 
 export function Home() {
+  const navigation = useNavigation();
   const cardData = {
     brand: 'Audi',
     name: 'RS 5 Coupe',
@@ -25,12 +28,17 @@ export function Home() {
     thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1uDELAOoFFlU7OqH4L8kEMXDITc-QdDVgOvYxIT5PDlu4IqEuXQO4Utht_lCOAQn0hhA&usqp=CAU',
   };
 
+  const theme = useTheme();
+
+  function handleCarDetails() {
+    console.log("oi")
+    navigation.navigate('CarDetails');
+
+  }
+
   return (
     <Container>
-      <StatusBar barStyle='light-content'
-        backgroundColor='transparent'
-        translucent
-      />
+    
       <Header>
         <HeaderContent>
           <Logo
@@ -47,7 +55,7 @@ export function Home() {
       <CarList
         data={[1, 2, 3, 1, 2, 3]}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={(item) => <Car data={cardData} />}
+        renderItem={(item) => <Car data={cardData} onPress={handleCarDetails} />}
       />
 
 
